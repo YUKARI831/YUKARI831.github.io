@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Javascript的奇淫技巧</title>
+    <url>/2020/04/22/Javascript%E7%9A%84%E5%A5%87%E6%B7%AB%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<h1 id="Javascript的奇淫技巧"><a href="#Javascript的奇淫技巧" class="headerlink" title="Javascript的奇淫技巧"></a>Javascript的奇淫技巧</h1><h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>数组转字符串</p>
+<p>var arr = [1,2,3,4,5,6];</p>
+<p>var str = arr+’’; //1,2,3,4,5,6</p>
+<h3 id="字符串转数字"><a href="#字符串转数字" class="headerlink" title="字符串转数字"></a>字符串转数字</h3><p>var str = ‘999’;</p>
+<p>var num = str * 1; //999</p>
+<p>var str = ‘999’;</p>
+<p>var num = str - 0; //999</p>
+<h3 id="向下取整"><a href="#向下取整" class="headerlink" title="向下取整"></a>向下取整</h3><p>var num = ~~1.23232656; //  1</p>
+<p>var num = 563.933333 &gt;&gt; 0; //  563</p>
+<h3 id="boolean-转换"><a href="#boolean-转换" class="headerlink" title="boolean 转换"></a>boolean 转换</h3><p>var bool = !!null; //  false</p>
+<p>var bool = !!’null’; //  true</p>
+<p>var bool = !!undefined; //  false</p>
+<p>var bool = !!’undefined’; //  true</p>
+<p>var bool = !!0; //  false</p>
+<p>var bool = !!’0’; //  true</p>
+<p>var bool=!!’’; // true</p>
+<p>var bool=!![]; // true</p>
+<p>var bool=!!{}; // true</p>
+<p>var bool=!!new Boolean(‘false’); // true</p>
+<p>var bool=!!new Boolean(‘true’); // true</p>
+<h2 id="判断对象下面是否有此属性"><a href="#判断对象下面是否有此属性" class="headerlink" title="判断对象下面是否有此属性"></a>判断对象下面是否有此属性</h2><h3 id="直接判断"><a href="#直接判断" class="headerlink" title="直接判断"></a>直接判断</h3><p>var obj = {a:123};</p>
+<p>if(obj.a){  //obj.b ==&gt;123</p>
+<p>console.log(‘运行了’) //可以运行<br>}</p>
+<p>if(obj.b){   //obj.b ==&gt;undefined</p>
+<p>console.log(‘运行了’) //没有运行<br>}</p>
+<p>var obj2 = {a:false};</p>
+<p>if(obj2.a){  //obj.b ==&gt;false</p>
+<p>console.log(‘运行了’) //没有运行<br>}</p>
+<h2 id="in-操作符"><a href="#in-操作符" class="headerlink" title="in 操作符"></a>in 操作符</h2><p>var obj = {a:123};</p>
+<p>if(‘a’ in obj){ // ‘a’ in obj ==&gt;true</p>
+<p>console.log(‘运行了’) //可以运行<br>}</p>
+<p>if(‘b’ in obj){// ‘a’ in obj ==&gt;false</p>
+<p>console.log(‘运行了’) //没有运行<br>}</p>
+<h2 id="利用hasOwnProperty"><a href="#利用hasOwnProperty" class="headerlink" title="利用hasOwnProperty"></a>利用hasOwnProperty</h2><p>var obj = {a:123};</p>
+<p>if(obj.hasOwnProperty(‘a’)){   //==&gt;true</p>
+<p>console.log(‘运行了’) //可以运行<br>}</p>
+<p>if(obj.hasOwnProperty(‘b’)){  //==&gt;false</p>
+<p>console.log(‘运行了’) //没有运行<br>}</p>
+<p>还有好多好多,得慢慢写</p>
+]]></content>
+      <tags>
+        <tag>Javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>npm、yarn包管理工具切换淘宝源</title>
+    <url>/2020/04/22/npm%E3%80%81yarn%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E5%88%87%E6%8D%A2%E6%B7%98%E5%AE%9D%E6%BA%90/</url>
+    <content><![CDATA[<h1 id="npm、yarn包管理工具切换淘宝源"><a href="#npm、yarn包管理工具切换淘宝源" class="headerlink" title="npm、yarn包管理工具切换淘宝源"></a>npm、yarn包管理工具切换淘宝源</h1><p>因为一些特殊原因，npm、Yarn等包管理软件在国内下载总是有一点慢。 可以切换为淘宝源，直接从国内的服务器直接拉取。 这里做一个笔记：</p>
+<p> #NPM<br>npm config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a> –global</p>
+<p>npm config set disturl <a href="https://npm.taobao.org/dist" target="_blank" rel="noopener">https://npm.taobao.org/dist</a> –global</p>
+<p>如果不能开心的使用以上配置,可以尝试以下方法:</p>
+<p>npm config set registry <a href="http://registry.cnpmjs.org" target="_blank" rel="noopener">http://registry.cnpmjs.org</a></p>
+<p>npm info underscore </p>
+<p>//（如果上面配置正确这个命令会有字符串response）</p>
+<p> #yarn</p>
+<p> yarn config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a> –global</p>
+<p> yarn config set disturl <a href="https://npm.taobao.org/dist" target="_blank" rel="noopener">https://npm.taobao.org/dist</a> –global</p>
+<p> 如果出现EACCES: permission denied这样的权限报错,修复/usr/local目录的所有权：</p>
+<p> sudo chown -R <code>whoami</code> /usr/local</p>
+<p>Code 98: Valine 初始化失败，请检查 av-min.js 版本</p>
+]]></content>
+      <tags>
+        <tag>nodejs</tag>
+      </tags>
+  </entry>
+</search>
